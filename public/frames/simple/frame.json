@@ -1,0 +1,8 @@
+{
+  "label": "Simple",
+  "accent": "#ff4fa3",
+  "backgroundColour": "#fdf3f8",
+  "photos": { "border": "rounded", "tilt": false },
+  "title": { "colour": "#170b1f", "plate": "" },
+  "card": { "colour": "#ff4fa3", "textColour": "#ffffff" }
+}

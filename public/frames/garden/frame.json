@@ -1,0 +1,9 @@
+{
+  "label": "Garden party",
+  "accent": "#d9798f",
+  "background": "background.jpg",
+  "backgroundColour": "#f7ecdc",
+  "photos": { "border": "print", "colour": "#ffffff", "tilt": false },
+  "title": { "colour": "#7a3e4a", "plate": "#fbf3e8d9" },
+  "card": { "colour": "#ffffffd9", "textColour": "#7a3e4a" }
+}

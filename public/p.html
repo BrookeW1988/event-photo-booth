@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Your photos</title>
+  <link rel="icon" href="/brand/icon.svg">
+  <link rel="stylesheet" href="/css/booth.css">
+</head>
+<body class="">
+  <!-- A guest's own photos: what the QR code and the email link to. -->
+  <main class="page narrow">
+    <img class="logo" id="logo" alt="" hidden>
+    <h1 id="title" style="font-size:34px"></h1>
+    <img class="photo" id="feed" alt="Your photo booth photos">
+    <a class="btn" id="dl-feed"></a>
+    <img class="photo" id="story" alt="Your photo booth story" style="width:72%;margin-top:18px">
+    <a class="btn ghost" id="dl-story"></a>
+    <p class="muted small" id="tip"></p>
+    <p class="muted" id="tag"></p>
+    <p class="muted" id="missing" hidden>We couldn't find these photos. They may have been removed after the event.</p>
+  </main>
+  <script type="module" src="/js/guest.js"></script>
+</body>
+</html>

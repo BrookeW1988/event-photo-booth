@@ -1,0 +1,41 @@
+# Netlify settings. You shouldn't need to change anything here.
+
+[build]
+  # The booth is plain HTML + JavaScript, so there's nothing to build:
+  # Netlify publishes the public/ folder exactly as it is.
+  publish = "public"
+  command = ""
+
+[functions]
+  # The small server bits (saving photos, the wall list, the admin page).
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[dev]
+  # `npm run dev` = run the booth on your own computer at http://localhost:8888
+  publish = "public"
+  port = 8888
+  autoLaunch = false
+
+# Short guest links: /p/<token> shows that guest's photos.
+[[redirects]]
+  from = "/p/:token"
+  to = "/p.html"
+  status = 200
+
+# Keep every page out of Google: this is for your guests, not for search.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Permissions-Policy = "camera=(self)"
+
+# Settings and frame art: always fetch the latest, so your changes show up straight away.
+[[headers]]
+  for = "/booth.config.json"
+  [headers.values]
+    Cache-Control = "no-cache"
+[[headers]]
+  for = "/frames/*"
+  [headers.values]
+    Cache-Control = "no-cache"

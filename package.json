@@ -1,0 +1,21 @@
+{
+  "name": "event-photo-booth",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "An iPad photo booth for your event: 3 shots, your own frames, a QR code to take the photos home, a live photo wall and an end-of-night slideshow.",
+  "license": "MIT",
+  "scripts": {
+    "setup": "npm install && bash tools/new-keys.sh",
+    "dev": "npx -y netlify-cli@27.14.2 dev --offline",
+    "check": "node tools/check.mjs",
+    "deploy:test": "npx -y netlify-cli@27.14.2 deploy",
+    "deploy:live": "npx -y netlify-cli@27.14.2 deploy --prod"
+  },
+  "dependencies": {
+    "@netlify/blobs": "11.1.6"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

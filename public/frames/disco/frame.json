@@ -1,0 +1,9 @@
+{
+  "label": "Disco",
+  "accent": "#ff4fa3",
+  "background": "background.jpg",
+  "backgroundColour": "#2a0a2e",
+  "photos": { "border": "print", "colour": "#ffffff", "tilt": true },
+  "title": { "colour": "#ffffff", "plate": "#2a0a2ecc" },
+  "card": { "colour": "#ffffffee", "textColour": "#2a0a2e" }
+}

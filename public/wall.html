@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Photo wall</title>
+  <link rel="icon" href="/brand/icon.svg">
+  <link rel="stylesheet" href="/css/booth.css">
+</head>
+<body class="kiosk">
+  <!-- The big-screen photo wall. Open it as /wall#key=YOUR_BOOTH_KEY on a TV or projector. -->
+  <header class="wall-head"><img id="logo" alt="" hidden><h1 id="title"></h1></header>
+  <main class="wall-grid" id="grid"></main>
+  <section class="screen" id="empty" hidden><p class="head" style="font-size:40px" id="empty-text"></p></section>
+  <script type="module" src="/js/wall.js"></script>
+</body>
+</html>

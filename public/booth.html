@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Photo booth</title>
+  <link rel="icon" href="/brand/icon.svg">
+  <link rel="stylesheet" href="/css/booth.css">
+</head>
+<!-- The photo booth kiosk. Open it as /booth#key=YOUR_BOOTH_KEY (your admin
+     page has the full link and a QR code to open it on the iPad). -->
+<body class="kiosk">
+
+  <!-- Live camera: stays switched on for the whole day, only shown while posing. -->
+  <div class="camera-wrap" id="camera-wrap" hidden>
+    <div class="camera" id="camera">
+      <video id="video" autoplay playsinline muted></video>
+      <div class="countdown" id="countdown" hidden>
+        <p class="num" id="count-num"></p>
+        <p class="label" id="count-label"></p>
+      </div>
+      <div class="flash" id="flash" hidden></div>
+    </div>
+  </div>
+
+  <section class="screen" data-screen="loading">
+    <div class="spinner"></div>
+  </section>
+
+  <section class="screen" data-screen="locked" hidden>
+    <h2 id="locked-title" style="font-size:44px"></h2>
+    <p class="muted" id="locked-help" style="max-width:460px"></p>
+    <button class="btn ghost" id="locked-retry" type="button">Try again</button>
+  </section>
+
+  <section class="screen" data-screen="attract" id="attract" hidden>
+    <img class="attract-logo" id="attract-logo" alt="" hidden>
+    <h1 class="attract-title" id="attract-title"></h1>
+    <svg class="attract-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.5" r="3.6"/>
+    </svg>
+    <p class="tap-pill" id="tap-pill"></p>
+    <p class="muted" id="attract-small"></p>
+    <p class="privacy" id="privacy"></p>
+  </section>
+
+  <section data-screen="framePick" hidden>
+    <div class="picker" id="picker">
+      <p class="head" id="pick-title" style="font-size:26px"></p>
+      <div class="frames" id="frames"></div>
+      <div class="row">
+        <button class="btn quiet" id="pick-back" type="button"></button>
+        <button class="btn" id="pick-start" type="button"></button>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen="capture" hidden></section>
+
+  <section class="screen scroll" data-screen="preview" hidden>
+    <h2 id="preview-title" style="font-size:44px"></h2>
+    <div class="previews">
+      <figure class="feed"><img id="feed-preview" alt="Your feed post"><figcaption id="for-feed"></figcaption></figure>
+      <figure class="story"><img id="story-preview" alt="Your story"><figcaption id="for-story"></figcaption></figure>
+    </div>
+    <div class="frames mini" id="frames-mini"></div>
+    <p class="error" id="preview-error" hidden></p>
+    <div class="row">
+      <button class="btn ghost" id="go-again" type="button"></button>
+      <button class="btn" id="keep" type="button"></button>
+    </div>
+    <button class="btn quiet" id="back-to-start" type="button"></button>
+  </section>
+
+  <section class="screen scroll" data-screen="email" hidden>
+    <img class="thumb-small" id="email-thumb" alt="">
+    <h2 id="email-title" style="font-size:38px"></h2>
+    <form class="email-form" id="email-form" novalidate>
+      <input type="email" id="email" inputmode="email" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false">
+      <label class="optin"><input type="checkbox" id="optin"><span id="optin-text"></span></label>
+      <p class="error" id="email-error" hidden></p>
+      <button class="btn" id="send" type="submit"></button>
+      <button class="btn quiet" id="skip-email" type="button"></button>
+      <button class="btn quiet" id="back-to-photos" type="button"></button>
+    </form>
+  </section>
+
+  <section class="screen" data-screen="sending" hidden>
+    <div class="spinner"></div>
+    <p class="head" id="sending-label" style="font-size:28px"></p>
+  </section>
+
+  <section class="screen" data-screen="done" hidden>
+    <h2 id="done-title" style="font-size:48px"></h2>
+    <p class="muted" id="done-text" style="max-width:440px;font-size:18px"></p>
+    <div class="qr" id="qr"></div>
+    <button class="btn" id="all-done" type="button"></button>
+  </section>
+
+  <section class="screen" data-screen="cameraError" hidden>
+    <h2 id="cam-title" style="font-size:40px"></h2>
+    <p class="muted" id="cam-help" style="max-width:460px"></p>
+    <button class="btn" id="cam-retry" type="button"></button>
+  </section>
+
+  <script type="module" src="/js/booth.js"></script>
+</body>
+</html>

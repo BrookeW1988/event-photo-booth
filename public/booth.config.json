@@ -1,0 +1,98 @@
+{
+  "_help": "Everything about your booth lives in this one file. Change a value, save, then refresh the booth page. Colours are hex codes (#rrggbb). Fonts are any font name from fonts.google.com. Easiest way: tell Claude what you want changed.",
+
+  "event": {
+    "name": "Your Event",
+    "line2": "06.12.2026 · #yourevent",
+    "logo": "brand/logo.png"
+  },
+
+  "look": {
+    "colours": {
+      "background": "#170b1f",
+      "text": "#ffffff",
+      "muted": "#bfaecb",
+      "accent": "#ff4fa3",
+      "button": "#ff4fa3",
+      "buttonText": "#ffffff"
+    },
+    "fonts": {
+      "headings": "Shrikhand",
+      "body": "DM Sans"
+    },
+    "startScreenImage": "frames/disco/background.jpg"
+  },
+
+  "frames": ["disco", "garden", "simple"],
+
+  "booth": {
+    "camera": "back",
+    "firstCountdown": 5,
+    "nextCountdown": 3,
+    "askForEmail": "optional",
+    "optInText": "Keep me posted about future events (optional)",
+    "privacyNote": "Photos taken here may show on the big screen during the event."
+  },
+
+  "words": {
+    "boothTitle": "Photo booth",
+    "tapToStart": "Tap to start",
+    "attractSmall": "3 photos · cute frames · sent straight to you",
+    "pickFrame": "Pick your frame",
+    "back": "← Back",
+    "start": "Start · 3 photos",
+    "firstPose": "Strike a pose!",
+    "nextPose": "Pose {n} of 3. Switch it up!",
+    "previewTitle": "Look at you!",
+    "forFeed": "For your feed",
+    "forStory": "For your story",
+    "goAgain": "↻ Go again",
+    "keepThem": "Love it, get my photos →",
+    "backToStart": "← Back to start",
+    "emailTitle": "Where should we send them?",
+    "emailPlaceholder": "your@email.com",
+    "sendButton": "Send my photos",
+    "skipEmail": "Skip, just show me the QR code",
+    "backToPhotos": "← Back to my photos",
+    "sending": "Saving your photos…",
+    "retrying": "Hang tight, the wi-fi hiccuped. Trying again…",
+    "doneTitle": "You're all set!",
+    "doneWithEmail": "Check your inbox, your photos are on the way. Or scan this to grab them now:",
+    "doneNoEmail": "Scan this with your phone camera to grab your photos:",
+    "allDone": "All done → next!",
+    "badEmail": "That email doesn't look quite right. Check it and try again.",
+    "sendFailed": "Couldn't save just now. Tap send to try again.",
+    "cameraErrorTitle": "The camera's having a moment",
+    "cameraErrorHelp": "Check this browser is allowed to use the camera (on iPad: Settings → Apps → Safari → Camera → Allow), then tap below.",
+    "tryAgain": "Try again",
+    "lockedTitle": "Booth locked",
+    "lockedHelp": "This page needs the booth key in the link. Open the booth from your admin page to get the right link."
+  },
+
+  "email": {
+    "subject": "Your photo booth photos are here",
+    "heading": "Look at you!",
+    "message": "Thanks for jumping in the photo booth. Tap below to save your photos for your feed and your story.",
+    "buttonText": "Get my photos"
+  },
+
+  "guestPage": {
+    "title": "Your photo booth photos",
+    "downloadFeed": "Save for your feed",
+    "downloadStory": "Save for your story",
+    "tip": "On iPhone: press and hold a photo, then tap Save to Photos.",
+    "tagLine": "Tag us when you post!"
+  },
+
+  "wall": {
+    "title": "The photo wall",
+    "show": "raw",
+    "emptyText": "Photos land here soon. Go find the photo booth!"
+  },
+
+  "slideshow": {
+    "title": "That's a wrap!",
+    "subtitle": "Your Event · 2026",
+    "secondsPerPhoto": 6
+  }
+}
