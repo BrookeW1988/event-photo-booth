@@ -1,6 +1,6 @@
 ---
 name: photo-booth
-description: Set up, customise, test and run this event photo booth. Use when the user says "set up my photo booth", "make it mine", "change the colours / words / logo / fonts", "make a new frame", "get Codex to draw a frame", "use my Canva design as a frame", "test the booth", "go live", "put it on Netlify", "turn on email", "what do I do on the day", "get my guest list", "delete the photos", or asks how any part of this booth works.
+description: Set up, customise, test and run this event photo booth. Use when the user says "set up my photo booth", "make it mine", "change the colours / words / logo / fonts", "make a new frame", "get Codex to draw a frame", "use my Canva design as a frame", "test the booth", "go live", "put it on Netlify", "turn on email", "what do I do on the day", "get my guest list", "make a GIF of the photos", "GIF of the night", "delete the photos", or asks how any part of this booth works.
 ---
 
 # Photo booth
@@ -106,9 +106,19 @@ Changing settings or frames after going live needs another live deploy. Changing
 
 Point them to `docs/ON-THE-DAY.md`. The short version: iPad on charge in a stand, Auto-Lock set to Never, Guided Access on, good light on faces, wall and slideshow links open on the screens, and one test photo before doors open.
 
+## Make a GIF of the night ("make a GIF", "GIF of the photos")
+
+It's a button on the admin page, made in their browser, nothing to install. Tell them:
+1. Open the admin link from `my-links.md` (the live one after the event) and scroll to **Make a GIF of the night**.
+2. Pick **Plain photos** (one per group, flipbook style) or **Framed posts** (shows off the frames). Default is the newest 30 photos.
+3. Change the words if they like: **Window title** (the file name on the little window), **Bottom left** and **Bottom right**. It uses their booth colours automatically.
+4. **Make my GIF**, then **Download GIF**. Under 5 MB suits emails; if it's bigger, use fewer photos.
+
+Remind them: only post it publicly if their guests are happy with that (the start screen only says photos may show on the big screen; change `booth.privacyNote` before the event if they plan to share online). Make the GIF BEFORE "Delete everything". To change the GIF's look beyond the colours and words (size, fonts, layout), edit `public/js/gif.js` and test with a couple of photos locally.
+
 ## After the event
 
-Admin page: **Download guest list (CSV)**. Only email people marked "said yes to updates". The rest only gave their email to get their photos. Then **Delete everything** when they're ready.
+Admin page: **Download guest list (CSV)**. Only email people marked "said yes to updates". The rest only gave their email to get their photos. Make the GIF of the night if they want one, then **Delete everything** when they're ready.
 
 ## Troubleshooting
 

@@ -43,4 +43,5 @@
 1. Admin page → **Download guest list (CSV)**. It opens in Excel or Google Sheets.
 2. Only add people marked **"yes" to updates** to your mailing list. Everyone else gave their email just to get their photos.
 3. Want a few photos for your own socials? Ask the guests first. The photos are theirs.
-4. When you're done, admin page → **Delete everything**. It clears every photo and email. Guests who saved their photos keep them, but their links stop working.
+4. Want a GIF of the night? Admin page → **Make a GIF of the night**. Pick **Plain photos** (one per group, like a flipbook) or **Framed posts** (shows off your frames), change the words on the little window if you like, then **Make my GIF** and **Download GIF**. It takes a few seconds and happens on your computer. Under 5 MB is best for emails: if yours is bigger, use fewer photos. Same rule as above: only post it publicly if your guests are happy with that.
+5. When you're done, admin page → **Delete everything**. It clears every photo and email. Guests who saved their photos keep them, but their links stop working. Make your GIF first!

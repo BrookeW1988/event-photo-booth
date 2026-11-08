@@ -12,6 +12,7 @@ You design the frames by describing them. Codex draws the art on your ChatGPT pl
 - **Two sizes per guest:** a 1080 × 1350 feed post and a 1080 × 1920 story
 - **A photo wall** for a TV during the event, and a **slideshow** for the projector at the end
 - **An admin page:** every photo, the guest list (download as a spreadsheet), delete buttons
+- **A GIF of the night:** one button on the admin page turns everyone's photos into a looping GIF in a cute retro window, for your thank-you email or socials
 - **Optional email:** guests get their photos in their inbox, and can tick "keep me posted" so you build your list
 - **3 starter frames** (Disco, Garden party, Simple) and a one-line way to make more
 
@@ -73,4 +74,4 @@ Guests' photos and emails are personal information, and you're looking after the
 
 ## Licence
 
-MIT: use it, change it, run it for your clients. The sample photos are AI-generated people (not real guests). The fonts load from Google Fonts. The QR code maker is qrcode-generator by Kazuhiko Arase (MIT).
+MIT: use it, change it, run it for your clients. The sample photos are AI-generated people (not real guests). The fonts load from Google Fonts. The QR code maker is qrcode-generator by Kazuhiko Arase (MIT). The GIF maker is gifenc by Matt DesLauriers (MIT).

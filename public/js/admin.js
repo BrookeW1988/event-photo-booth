@@ -2,6 +2,7 @@
 // guests' emails, the guest list download, and delete buttons.
 
 import { applyLook, keyFromLink, loadConfig } from "./setup.js";
+import { gifName, makeGif } from "./gif.js";
 import qrcode from "./vendor/qrcode.mjs";
 
 const app = document.getElementById("app");
@@ -81,6 +82,36 @@ async function render() {
     </section>
 
     <section class="card" style="margin-top:40px">
+      <h2 style="font-size:22px">Make a GIF of the night</h2>
+      <p class="muted" style="margin:8px 0 14px">One looping GIF of your photos, for your thank-you email, your socials or your community.
+      It's made right here on this computer. Posting it publicly? Make sure your guests are happy with that first
+      (say so on your tickets or your start screen).</p>
+      <div class="gif-form">
+        <label>Show
+          <select id="gif-show">
+            <option value="raw">Plain photos (one per group)</option>
+            <option value="framed">Framed posts</option>
+          </select></label>
+        <label>How many photos <input id="gif-count" type="number" min="2" max="60" value="${Math.min(30, Math.max(sessions.length, 2))}"></label>
+        <label>Speed
+          <select id="gif-speed">
+            <option value="450">Fast</option>
+            <option value="700" selected>Medium</option>
+            <option value="1100">Slow</option>
+          </select></label>
+        <label>Window title <input id="gif-title" value="${esc(gifName(config.event?.name))}"></label>
+        <label>Bottom left <input id="gif-left" value="${esc(String(config.event?.name ?? "").toLowerCase())}"></label>
+        <label>Bottom right <input id="gif-right" value="${esc(config.event?.line2 ?? "")}"></label>
+      </div>
+      <button class="btn" id="gif-make" type="button" ${sessions.length < 2 ? "disabled" : ""}>Make my GIF</button>
+      <p class="muted small" id="gif-status" style="margin-top:10px">${sessions.length < 2 ? "Take at least 2 photos first." : ""}</p>
+      <div class="gif-out" id="gif-out" hidden>
+        <img id="gif-img" alt="Your GIF">
+        <a class="btn" id="gif-dl" download>Download GIF</a>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:40px">
       <h2 style="font-size:22px">After the event</h2>
       <p class="muted" style="margin:8px 0 14px">Download the guest list first. Then you can delete every photo and email in one go,
       so you're not holding guests' photos for longer than you need to. This can't be undone.</p>
@@ -103,6 +134,7 @@ async function render() {
   );
   document.getElementById("refresh").addEventListener("click", render);
   document.getElementById("csv").addEventListener("click", downloadCsv);
+  document.getElementById("gif-make").addEventListener("click", () => buildGif(sessions));
   document.getElementById("delete-all").addEventListener("click", async () => {
     const typed = prompt("This deletes EVERY photo and every guest email. Download the guest list first!\n\nType DELETE to go ahead:");
     if (typed !== "DELETE") return;
@@ -111,6 +143,51 @@ async function render() {
     alert(r.ok ? `Done: deleted ${data.deleted} sessions.` : "That didn't work. Try again.");
     render();
   });
+}
+
+let gifUrl;
+
+async function buildGif(sessions) {
+  const button = document.getElementById("gif-make");
+  const status = document.getElementById("gif-status");
+  const value = (id) => document.getElementById(id).value;
+  const count = Math.min(Math.max(Number(value("gif-count")) || 30, 2), 60, sessions.length);
+  const colours = config.look?.colours ?? {};
+  button.disabled = true;
+  status.textContent = "Getting your photos…";
+  try {
+    const blob = await makeGif(sessions, {
+      show: value("gif-show"),
+      count,
+      msPerPhoto: Number(value("gif-speed")),
+      title: value("gif-title"),
+      left: value("gif-left"),
+      right: value("gif-right"),
+      colours: {
+        accent: colours.accent ?? "#ff4fa3",
+        background: colours.background ?? "#170b1f",
+        text: colours.text ?? "#ffffff",
+        buttonText: colours.buttonText ?? "#ffffff",
+      },
+      onProgress: (done, total) => (status.textContent = `Making your GIF… photo ${done} of ${total}`),
+    });
+    if (gifUrl) URL.revokeObjectURL(gifUrl);
+    gifUrl = URL.createObjectURL(blob);
+    const mb = blob.size / 1024 / 1024;
+    document.getElementById("gif-img").src = gifUrl;
+    const dl = document.getElementById("gif-dl");
+    dl.href = gifUrl;
+    dl.download = value("gif-title").trim().replace(/[\\/:*?"<>|]+/g, "") || "photo_booth.gif";
+    if (!dl.download.toLowerCase().endsWith(".gif")) dl.download += ".gif";
+    document.getElementById("gif-out").hidden = false;
+    status.textContent =
+      `Done: ${count} photos, ${mb.toFixed(1)} MB.` +
+      (mb > 5 ? " That's big for an email: try fewer photos." : "");
+  } catch (err) {
+    status.textContent = `That didn't work (${err.message}). Refresh the page and try again.`;
+  } finally {
+    button.disabled = false;
+  }
 }
 
 async function downloadCsv() {
